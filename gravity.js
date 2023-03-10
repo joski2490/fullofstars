@@ -6,7 +6,7 @@ window.fullofstars.PointMassBody = PointMassBody;
 
 function PointMassBody(mass, position, velocity) {
     this.mass = mass;
-    this.invMass = 5.0 / mass;
+    this.invMass = 15.0 / mass;
     this.position = position;
     this.velocity = velocity;
     this.force = new THREE.Vector3(0,0,0);
@@ -19,8 +19,8 @@ var tempVec = new THREE.Vector3(0,0,0); // To avoid allocations during updates
 var tempVec2 = new THREE.Vector3(0,0,0); // To avoid allocations during updates
 PointMassBody.prototype.updateAndResetForce = function(dt) {
 	var accelerationFactor = this.invMass * dt;
-	var force = this.force * 2;
-	var velocity = this.velocity * 0.5;
+	var force = this.force / 2;
+	var velocity = this.velocity * 2;
 	tempVec.set(force.x*accelerationFactor, force.y*accelerationFactor, force.z*accelerationFactor);
 	this.velocity.add(tempVec);
 	tempVec.set(velocity.x*dt, velocity.y*dt, velocity.z*dt);
@@ -320,7 +320,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
     console.log("typical star speed", typicalStarSpeed);
     var side = 2300.0;
 
-    var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 15000;
+    var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 35000;
 
     for (var p = 0; p < particleCount; p++) {
         var angle = 100 + Math.PI * 2 * Math.random();
