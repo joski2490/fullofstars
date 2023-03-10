@@ -347,7 +347,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
         }
         else {
             var pos = new THREE.Vector3(pX, pY, pZ);
-            var mass = typicalMass * 5 * Math.random() * Math.random();
+            var mass = typicalMass * 2 * Math.random() * Math.random();
             
 
             // This is newtonian and only works with no dark matter presence
