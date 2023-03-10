@@ -19,8 +19,8 @@ var tempVec = new THREE.Vector3(0,0,0); // To avoid allocations during updates
 var tempVec2 = new THREE.Vector3(0,0,0); // To avoid allocations during updates
 PointMassBody.prototype.updateAndResetForce = function(dt) {
 	var accelerationFactor = this.invMass * dt;
-	var force = this.force;
-	var velocity = this.velocity;
+	var force = this.force * 2;
+	var velocity = this.velocity * 0.5;
 	tempVec.set(force.x*accelerationFactor, force.y*accelerationFactor, force.z*accelerationFactor);
 	this.velocity.add(tempVec);
 	tempVec.set(velocity.x*dt, velocity.y*dt, velocity.z*dt);
