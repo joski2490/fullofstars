@@ -6,7 +6,7 @@ window.fullofstars.PointMassBody = PointMassBody;
 
 function PointMassBody(mass, position, velocity) {
     this.mass = mass;
-    this.invMass = 15.0 / mass;
+    this.invMass = 1.0 / mass;
     this.position = position;
     this.velocity = velocity;
     this.force = new THREE.Vector3(0,0,0);
@@ -19,8 +19,8 @@ var tempVec = new THREE.Vector3(0,0,0); // To avoid allocations during updates
 var tempVec2 = new THREE.Vector3(0,0,0); // To avoid allocations during updates
 PointMassBody.prototype.updateAndResetForce = function(dt) {
 	var accelerationFactor = this.invMass * dt;
-	var force = this.force / 2;
-	var velocity = this.velocity * 2;
+	var force = this.force * 3;
+	var velocity = this.velocity;
 	tempVec.set(force.x*accelerationFactor, force.y*accelerationFactor, force.z*accelerationFactor);
 	this.velocity.add(tempVec);
 	tempVec.set(velocity.x*dt, velocity.y*dt, velocity.z*dt);
@@ -148,13 +148,13 @@ fullofstars.createTwoTierSmartGravityApplicator = function(attractedCelestials, 
 
                  if(isBlackHoleInteraction) {
                     // Apply fake dark matter effect from black hole
-                    var DARK_FORCE_COEFFICIENT = 4*Math.pow(10, -20);
+                    var DARK_FORCE_COEFFICIENT = 12*Math.pow(10, -20);
                     var darkForce = DARK_FORCE_COEFFICIENT * gravitationalConstant * (massProduct / dist);
                     force += darkForce;
                 }
 
                 // TODO: Find a way to not normalize - we already have squared distance and a vector with the full length
-                var setLengthMultiplier = force / dist;
+                var setLengthMultiplier = (force * (Math.random()*10)) / (dist * (Math.random()*10)) ;
 
                 // Add force based on force amount and direction between bodies
                 body1force.x += body1To2X * setLengthMultiplier;
@@ -320,7 +320,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
     console.log("typical star speed", typicalStarSpeed);
     var side = 2300.0;
 
-    var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 1000;
+    var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 5000;
 
     for (var p = 0; p < particleCount; p++) {
         var angle = 100 + Math.PI * 2 * Math.random();
@@ -342,8 +342,8 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
           console.log("Creating black hole");
             var pos = new THREE.Vector3(0,0,0);
             var mass = BLACK_HOLE_MASS;
-            var xVel = 1;
-            var yVel = -1;
+            var xVel = 10;
+            var yVel = -10;
         }
         else {
             var pos = new THREE.Vector3(pX, pY, pZ);
