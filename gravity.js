@@ -90,7 +90,7 @@ PointMassBody.velocityVerletUpdate = function(bodies, dt, isPositionStep) {
     }
 };
 
-
+fullofstars.createTwoTierSmartGravityApplicator
 fullofstars.createTwoTierSmartGravityApplicator = function(attractedCelestials, attractingCelestials) {
     var applicator = {closeInteractionCount: 0};
     var attractingIsAttracted = attractingCelestials === attractedCelestials;
@@ -148,7 +148,7 @@ fullofstars.createTwoTierSmartGravityApplicator = function(attractedCelestials, 
 
                  if(isBlackHoleInteraction) {
                     // Apply fake dark matter effect from black hole
-                    var DARK_FORCE_COEFFICIENT = 4*Math.pow(10, -20);
+                    var DARK_FORCE_COEFFICIENT = 12*Math.pow(10, -20);
                     var darkForce = DARK_FORCE_COEFFICIENT * gravitationalConstant * (massProduct / dist);
                     force += darkForce;
                 }
