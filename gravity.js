@@ -5,7 +5,7 @@ window.fullofstars = window.fullofstars || {};
 window.fullofstars.PointMassBody = PointMassBody;
 
 function PointMassBody(mass, position, velocity) {
-    this.mass = mass;
+    this.mass = mass*2*Math.random();
     this.invMass = 1.0 / mass;
     this.position = position;
     this.velocity = velocity;
