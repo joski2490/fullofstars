@@ -148,13 +148,13 @@ fullofstars.createTwoTierSmartGravityApplicator = function(attractedCelestials, 
 
                  if(isBlackHoleInteraction) {
                     // Apply fake dark matter effect from black hole
-                    var DARK_FORCE_COEFFICIENT = 12*Math.pow(10, -20);
+                    var DARK_FORCE_COEFFICIENT = 4*Math.pow(10, -20);
                     var darkForce = DARK_FORCE_COEFFICIENT * gravitationalConstant * (massProduct / dist);
                     force += darkForce;
                 }
 
                 // TODO: Find a way to not normalize - we already have squared distance and a vector with the full length
-                var setLengthMultiplier = (force * (Math.random()*10)) / (dist * (Math.random()*10)) ;
+                var setLengthMultiplier = force / dist;
 
                 // Add force based on force amount and direction between bodies
                 body1force.x += body1To2X * setLengthMultiplier;
@@ -328,7 +328,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
         // This creates density variations angularly
         angle += 0.10 * Math.sin(angle * Math.PI*2);
         
-        var dist = side * 0.5 * Math.random();
+        var dist = ((side * Math.random() * Math.random())+(side * Math.random() * Math.random()))/2;
         dist += side * 0.04 * -Math.cos(angle * Math.PI*2);
 
         var pX = dist * Math.cos(angle);
@@ -342,8 +342,8 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
           console.log("Creating black hole");
             var pos = new THREE.Vector3(0,0,0);
             var mass = BLACK_HOLE_MASS;
-            var xVel = 10;
-            var yVel = -10;
+            var xVel = 0;
+            var yVel = 0;
         }
         else {
             var pos = new THREE.Vector3(pX, pY, pZ);
