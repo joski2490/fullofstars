@@ -320,7 +320,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
     console.log("typical star speed", typicalStarSpeed);
     var side = 3000.0;
 
-    var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 10000;
+    var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 5000;
 
     for (var p = 0; p < particleCount; p++) {
         var angle = Math.atan(Math.cosh(Math.sqrt((Math.random() * 10)+(Math.random()*10)))*10)+Math.pow((Math.sqrt(Math.PI)*Math.random()),(Math.floor(Math.random()*10)));//200 + Math.PI * 2 * Math.random();
