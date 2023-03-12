@@ -318,7 +318,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
 
     var typicalStarSpeed = 7*Math.pow(10, 10) * fullofstars.UNIVERSE_SCALE;
     console.log("typical star speed", typicalStarSpeed);
-    var side = 2300.0/3;
+    var side = 1300.0;
 
     var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 10000;
 
