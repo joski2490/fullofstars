@@ -344,10 +344,14 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
             var mass = BLACK_HOLE_MASS;
             var xVel = 0;
             var yVel = 0;
-        }
+            var pos2 = new THREE.Vector3(25, 25, 25);
+		var mass = BLACK_HOLE_MASS*1.1;
+		var xVel = 1;
+		var yVel = 1;
+	}
         else {
             var pos = new THREE.Vector3(pX, pY, pZ);
-            var mass = typicalMass * 2 * Math.random() * Math.random() * Math.floor(Math.random()*10);
+            var mass = typicalMass * 2 * Math.random() * Math.random();
             
 
             // This is newtonian and only works with no dark matter presence
@@ -357,9 +361,9 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
             vel.normalize();
             var requiredSpeed = typicalStarSpeed * 1.8 + typicalStarSpeed * 0.1 * Math.log(1.1+(10*dist/side));
 
-            var xVel = vel.z * requiredSpeed;
-            var yVel = vel.y * requiredSpeed;
-            var zVel = -vel.x * requiredSpeed;
+            var xVel = vel.z * requiredSpeed * Math.random();
+            var yVel = vel.y * requiredSpeed*Math.random();
+            var zVel = -vel.x * requiredSpeed*Math.random();
         }
         var body = new PointMassBody(mass, pos, new THREE.Vector3(xVel, yVel, zVel));
         bodies.push(body);
