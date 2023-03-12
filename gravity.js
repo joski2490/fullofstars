@@ -323,7 +323,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
     var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 10000;
 
     for (var p = 0; p < particleCount; p++) {
-        var angle = Math.atan(Math.cosh(Math.sqrt((Math.random() * 10)+(Math.random()*10)))*10)+Math.PI/2;//200 + Math.PI * 2 * Math.random();
+        var angle = Math.atan(Math.cosh(Math.sqrt((Math.random() * 10)+(Math.random()*10)))*10)+Math.pow((Math.sqrt(Math.PI)*Math.random()),(Math.floor(Math.random()*10)));//200 + Math.PI * 2 * Math.random();
 
         // This creates density variations angularly
         angle += /*0.10*/ (Math.cbrt(Math.random())/3) * Math.sin(angle * Math.PI*2);
