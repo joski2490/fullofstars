@@ -5,7 +5,7 @@ window.fullofstars = window.fullofstars || {};
 window.fullofstars.PointMassBody = PointMassBody;
 
 function PointMassBody(mass, position, velocity) {
-    this.mass = mass*2*Math.random();
+    this.mass = mass;
     this.invMass = 1.0 / mass;
     this.position = position;
     this.velocity = velocity;
@@ -320,7 +320,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
     console.log("typical star speed", typicalStarSpeed);
     var side = 2300.0;
 
-    var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 1000;
+    var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * (Math.random() * 10000);
 
     for (var p = 0; p < particleCount; p++) {
         var angle = Math.cosh(Math.sqrt((Math.random() * 10)+(Math.random()*10)))*10;//200 + Math.PI * 2 * Math.random();
