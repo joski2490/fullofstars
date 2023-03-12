@@ -7,8 +7,8 @@ window.fullofstars.PointMassBody = PointMassBody;
 function PointMassBody(mass, position, velocity) {
     this.mass = mass;
     this.invMass = 1.0 / mass;
-    this.position = position;
-    this.velocity = velocity;
+    this.position = position/2;
+    this.velocity = velocity*15;
     this.force = new THREE.Vector3(0,0,0);
     this.prevForce = new THREE.Vector3(0,0,0);
 }
