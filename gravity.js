@@ -316,7 +316,7 @@ fullofstars.createTwoTierSmartGravityApplicator = function(attractedCelestials, 
 fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlackHole) {
     var bodies = [];
 
-    var typicalStarSpeed = 7*Math.pow(10, 10) * fullofstars.UNIVERSE_SCALE;
+    var typicalStarSpeed = /*7*/(Math.floor(Math.random()*10))*Math.pow(10, 10) * fullofstars.UNIVERSE_SCALE;
     console.log("typical star speed", typicalStarSpeed);
     var side = 1300.0;
 
