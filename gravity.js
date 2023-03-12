@@ -318,7 +318,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
 
     var typicalStarSpeed = /*7*/(Math.floor(Math.random()*10))*Math.pow(10, 10) * fullofstars.UNIVERSE_SCALE;
     console.log("typical star speed", typicalStarSpeed);
-    var side = 1000.0;
+    var side = 3000.0;
 
     var BLACK_HOLE_MASS = fullofstars.TYPICAL_STAR_MASS * 10000;
 
@@ -347,7 +347,7 @@ fullofstars.createGravitySystem = function(particleCount, typicalMass, makeBlack
         }
         else {
             var pos = new THREE.Vector3(pX, pY, pZ);
-            var mass = typicalMass * 2 * Math.random() * Math.random();
+            var mass = typicalMass * 2 * Math.random() * Math.random() * Math.floor(Math.random()*10);
             
 
             // This is newtonian and only works with no dark matter presence
